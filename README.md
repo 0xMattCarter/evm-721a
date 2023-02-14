@@ -37,18 +37,18 @@
 - Gas units:
 - Cost:
   gwei eth
-  15: xxx
-  30: xxx
-  60: xxx
+  - 15 0.027320415
+  - 30 0.05464083
+  - 60 0.10928166
 
 #### 2 Tokens
 
 - Gas units:
 - Cost:
   gwei eth
-  15: xxx
-  30: xxx
-  60: xxx
+  - 15 0.027320415
+  - 30 0.05464083
+  - 60 0.10928166
 
 ## Testing
 
