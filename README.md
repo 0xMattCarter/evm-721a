@@ -25,10 +25,9 @@
 
 - Gas units: 1,821,361
 - Cost:
-  gwei eth
-  - 15 0.027320415
-  - 30 0.05464083
-  - 60 0.10928166
+  - 15 gwei: 0.027320415 eth
+  - 30 gwei: 0.05464083 eth
+  - 60 gwei: 0.10928166 eth
 
 ### Mint
 
@@ -36,19 +35,17 @@
 
 - Gas units:
 - Cost:
-  gwei eth
-  - 15 0.027320415
-  - 30 0.05464083
-  - 60 0.10928166
+  - 15 gwei: 0.xx eth
+  - 30 gwei: 0.xx eth
+  - 60 gwei: 0.xx eth
 
 #### 2 Tokens
 
 - Gas units:
 - Cost:
-  gwei eth
-  - 15 0.027320415
-  - 30 0.05464083
-  - 60 0.10928166
+  - 15 gwei: 0.xx eth
+  - 30 gwei: 0.xx eth
+  - 60 gwei: 0.xx eth
 
 ## Testing
 
