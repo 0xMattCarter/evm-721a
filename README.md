@@ -1,61 +1,55 @@
 # ERC-721A Contract for EVM Networks
 
-## Deployment:
-
-### Deploying using hardhat
+## Deploy:
 
 - `npx hardhat run --network <network> scripts/deploy.ts`
 
-#### Examples:
+### Examples:
 
 - `npx hardhat run --network goerli_eth scripts/deploy.ts`
 - `npx hardhat run --network testnet_canto scripts/deploy.ts`
 - Todo: Mainnet (eth) and Canot (main)
 
-### Verifying using hardhat
+## Verifying
 
 - `npx hardhat verify --network <NETWORK> --constructor-args scripts/arguments.ts <DEPLOYED_CONTRACT_ADDRESS>`
 
-#### Notes:
+- Commandline verification only works with Ethereum (mainent, goerli, etc)
+  - Need custom setup in `hardhat.config.ts` for other chains
+- For manual verification, copy the `input` field from `artifacts/build-info/` and put into `input.json` for upload
+  - Currently verification on canto testnet fails
 
-- Only works with Ethereum (mainent, goerli, etc)
-- Need custom setup in `hardhat.config.ts` to use commandline
-- Moving the field `input` from `artifacts/build-info/` -> `input.json` should work for contract verification
-- Currently verification on Canto testnet fails
-
-## Gas usage
+## Gas breakdown
 
 ### Deployment
 
 - Gas units: 1,821,361
-- Range:
-
-  - 15 gwei: 0.027320415 eth
-  - 30 gwei: 0.05464083 eth
-  - 60 gwei: 0.10928166 eth
+- Cost:
+  gwei eth
+  - 15 0.027320415
+  - 30 0.05464083
+  - 60 0.10928166
 
 ### Mint
 
-- 1 Token
+#### 1 Token
 
-  - Gas units:
+- Gas units:
+- Cost:
+  gwei eth
+  15: xxx
+  30: xxx
+  60: xxx
 
-    - Range:
+#### 2 Tokens
 
-      - 15 gwei:
-      - 60 gwei:
-      - 60 gwei:
+- Gas units:
+- Cost:
+  gwei eth
+  15: xxx
+  30: xxx
+  60: xxx
 
-- 2 Tokens
-
-  - Gas units:
-
-    - Range:
-
-      - 15 gwei:
-      - 60 gwei:
-      - 60 gwei:
-
-## Notes
+## Testing
 
 - Run `npx hardhat test` to test contracts
