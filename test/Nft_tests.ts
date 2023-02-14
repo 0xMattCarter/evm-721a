@@ -56,6 +56,8 @@ describe("ERC-721A TESTING", () => {
       expect(await nft.MAX_SUPPLY()).to.equal(deployParams.maxSupply);
       expect(await nft.priceWei()).to.equal(deployParams.priceWei);
       expect(await nft.royaltyFeeBps()).to.equal(deployParams.royaltyFeeBps);
+
+      /// get gas cost of minting 1 NFT and a few
     });
     it("Transfers Ownership upon deployment", async () => {
       /// Transfer ownership to account1
@@ -161,7 +163,7 @@ describe("ERC-721A TESTING", () => {
 
       /// `account1` balance increases by cost of 2 mints due to withdraw
       expect(BigNumber.from(addrBal2).sub(BigNumber.from(addrBal1))).to.equal(
-        BigNumber.from(deployParams.priceWei).mul(2).sub("24198811926516") // gas to revert txn above
+        BigNumber.from(deployParams.priceWei).mul(2).sub("24198802048386") // gas to revert txn above
       );
       /// Contract balance is 0
       expect(BigNumber.from(contractBal3)).to.equal(contractBal1);

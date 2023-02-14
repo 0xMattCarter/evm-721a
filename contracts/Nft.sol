@@ -12,11 +12,11 @@ error InsufficientFunds();
 error MintingNotActive();
 
 /**
- * @title NFT TITLE
+ * @title OmniNFT
  * @author Matt Carter, degendeveloper.eth
  * 13 February, 2023
  *
- * This contract is EIP-2981 compliant and implements the ERC721A contract
+ * This contract is EIP-2981 compliant and implements the ERC-721A contract
  * written by Chiru Labs @ https://www.erc721a.org/
  *
  */
@@ -36,8 +36,10 @@ contract Nft is ERC721A, Ownable {
   /// @dev Receiver of royalty payments
   address public royaltyReceiver;
 
-  /// @dev Is minting allowed and are the tokens revealed ?
+  /// @dev Is minting allowed ?
   bool public isMinting;
+
+  /// @dev Are tokens revealed (unique or identical) ?
   bool public isRevealed;
 
   /// @dev Links to contract URI and base token URI
@@ -45,7 +47,7 @@ contract Nft is ERC721A, Ownable {
   string public URI;
 
   /**
-   * Set initial arguments/data at deployment
+   * Sets initial arguments/data at deployment
    * @param _name The collection name
    * @param _symbol The collection symbol
    * @param _uri The base URI for token
@@ -70,29 +72,33 @@ contract Nft is ERC721A, Ownable {
     URI = _uri;
     contractURI = _contractUri;
     royaltyReceiver = _royaltyReceiver;
-    /// Transfer ownership to new owner
-    transferOwnership(_owner);
     MAX_SUPPLY = _maxSupply;
     priceWei = _priceWei;
     royaltyFeeBps = _royaltyFeeBps;
+
+    /// Transfer ownership to new owner
+    transferOwnership(_owner);
   }
 
-  /// ============ CONTRACT/INTERNAL FUNCTIONS ============ ///
+  /// ============ INTERNAL FUNCTIONS ============ ///
 
   /**
-   * Overrides first mint to start at tokenId 1 instead of 0
-   * @return _id The tokenId for the first token
+   * Overrides the first mint to start at tokenId 1 instead of 0
+   * @return _id The tokenId to start minting at
    */
   function _startTokenId() internal pure override returns (uint256 _id) {
     _id = 1;
   }
 
   /**
-   * Calculates royalty fee for a sale
+   * Calculates the royalty fee for a sale
    * @param _salePrice The price of the sale in wei
+   * @return _royalty The royalty fee in wei
    */
-  function _calculateRoyalty(uint256 _salePrice) public view returns (uint256) {
-    return ((royaltyFeeBps * _salePrice) / 10000);
+  function _calculateRoyalty(
+    uint256 _salePrice
+  ) public view returns (uint256 _royalty) {
+    _royalty = ((royaltyFeeBps * _salePrice) / 10000);
   }
 
   /// ============ OWNER FUNCTIONS ============ ///
@@ -148,7 +154,7 @@ contract Nft is ERC721A, Ownable {
   }
 
   /**
-   * Toggle if tokens are revealed or not
+   * Toggle if tokens are revealed or not (unique or identical)
    */
   function toggleReveal() external onlyOwner {
     isRevealed = !isRevealed;
@@ -198,7 +204,7 @@ contract Nft is ERC721A, Ownable {
     _mint(msg.sender, _amount);
   }
 
-  /// ============ READ-ONLY FUNCTIONS ============ ///
+  /// ============ READ FUNCTIONS ============ ///
 
   /**
    * Return the URI for a specific token
@@ -207,11 +213,11 @@ contract Nft is ERC721A, Ownable {
    */
   function tokenURI(
     uint256 _tokenId
-  ) public view override returns (string memory) {
+  ) public view override returns (string memory _URI) {
     if (!isRevealed) {
-      return URI;
+      _URI = URI;
     } else {
-      return string(abi.encodePacked(URI, _tokenId.toString(), ".json"));
+      _URI = string(abi.encodePacked(URI, _tokenId.toString(), ".json"));
     }
   }
 
@@ -234,6 +240,7 @@ contract Nft is ERC721A, Ownable {
     uint256 _tokenId,
     uint256 _salePrice
   ) external view returns (address receiver, uint256 royaltyAmount) {
-    return (royaltyReceiver, _calculateRoyalty(_salePrice));
+    receiver = royaltyReceiver;
+    royaltyAmount = _calculateRoyalty(_salePrice);
   }
 }

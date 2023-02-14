@@ -2,7 +2,7 @@
 
 ## Deployment:
 
-### Deploying Through Hardhat
+### Deploying using hardhat
 
 - `npx hardhat run --network <network> scripts/deploy.ts`
 
@@ -12,7 +12,7 @@
 - `npx hardhat run --network testnet_canto scripts/deploy.ts`
 - Todo: Mainnet (eth) and Canot (main)
 
-### Verifying Through Hardhat
+### Verifying using hardhat
 
 - `npx hardhat verify --network <NETWORK> --constructor-args scripts/arguments.ts <DEPLOYED_CONTRACT_ADDRESS>`
 
@@ -23,12 +23,34 @@
 - Moving the field `input` from `artifacts/build-info/` -> `input.json` should work for contract verification
 - Currently verification on Canto testnet fails
 
-## Gas Usage:
+## Gas usage
 
 ### Deployment
 
 - Gas units: 1,821,361
 - Range:
+
   - 15 gwei: 0.027320415 eth
   - 30 gwei: 0.05464083 eth
   - 60 gwei: 0.10928166 eth
+
+### Mint
+
+    - 1 Token
+        - Gas units:
+            - Range:
+
+                - 15 gwei:
+                - 60 gwei:
+                - 60 gwei:
+    - 2 Tokens
+        - Gas units:
+            - Range:
+
+                - 15 gwei:
+                - 60 gwei:
+                - 60 gwei:
+
+## Notes
+
+- Run `npx hardhat test` to test contracts
