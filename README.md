@@ -4,7 +4,7 @@
 
 - `npx hardhat run --network <network> scripts/deploy.ts`
 
-### Examples:
+#### ...:
 
 - `npx hardhat run --network goerli_eth scripts/deploy.ts`
 - `npx hardhat run --network testnet_canto scripts/deploy.ts`
