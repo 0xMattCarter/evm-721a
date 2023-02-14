@@ -36,20 +36,25 @@
 
 ### Mint
 
-    - 1 Token
-        - Gas units:
-            - Range:
+- 1 Token
 
-                - 15 gwei:
-                - 60 gwei:
-                - 60 gwei:
-    - 2 Tokens
-        - Gas units:
-            - Range:
+  - Gas units:
 
-                - 15 gwei:
-                - 60 gwei:
-                - 60 gwei:
+    - Range:
+
+      - 15 gwei:
+      - 60 gwei:
+      - 60 gwei:
+
+- 2 Tokens
+
+  - Gas units:
+
+    - Range:
+
+      - 15 gwei:
+      - 60 gwei:
+      - 60 gwei:
 
 ## Notes
 
