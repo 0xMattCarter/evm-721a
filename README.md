@@ -5,16 +5,13 @@
 ### Deploy:
 
 - `npx hardhat run --network <network> scripts/deploy.ts`
-- network options: goerli_eth, testnet_canto
-- to do: eth_mainnet and canto_mainnet
+- see `hardhat.config.ts` for network options
 
 ### Verifying
 
-- `npx hardhat verify --network <NETWORK> --constructor-args scripts/arguments.ts <DEPLOYED_CONTRACT_ADDRESS>`
-  - command line only works with ethereum (mainent, goerli, etc)
-  - add custom setup in `hardhat.config.ts` for other chains
-    - manual verificatio: copy `input` field from `artifacts/build-info/`, paste into `input.json`
-  - verification on canto testnet currenly fails
+- Needs to be done manually, the `npx hardhat verify ...` commandline task is buggy with l2s
+
+  - Copy `input` field from latest build in `./artifacts/build-info/` to `./input.json`
 
 ### Gas Usage
 
